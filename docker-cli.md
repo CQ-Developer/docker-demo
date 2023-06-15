@@ -95,6 +95,7 @@ $ docker logs -f hello
 -t --tty                      为容器分配一个虚拟终端
    --link <name|id>[:alias]   添加一个到其他容器的连接并可以为该连接指定一个别名
    --pid <string>             为容器指定一个PID命名空间
+   --cidfile <string>         用于将新容器的id写入文件中
 ```
 ```shell
 # 在后台启动一个nginx
@@ -120,4 +121,35 @@ $ docker run --pid host busybox:1.29 ps
 $ docker exec hello ps
 # 在hello容器中打开一个shell并分配一个伪终端
 $ docker exec -it hello sh
+```
+
+## 9.rename
+rename可以为容器重命名
+> *docker rename container new_name*
+```shell
+# 将名为web的容器重命名为webid-old
+$ docker rename web webid-old
+```
+
+
+## 10.create
+create命令和run命令类似，只是创建的容器不会立即启动
+> *docker create [options] image [command] [agrg...]*
+
+
+## 11.ps
+ps命令用于列出当前docker中的容器
+> *docker ps [options]*
+```text
+[options]
+-a --all        列出所有容器，默认情况下只会列出正在运行的容器
+-l --lastest    列出最后一个创建的容器
+   --no-trunc   列出完整的容器ID
+-q --quiet      仅列出容器的ID
+```
+```shell
+# 列出所有容器
+$ docker ps -a
+# 仅列出所有容器的完整ID
+$ docker ps -a -q --no-trunc
 ```
