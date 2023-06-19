@@ -1,0 +1,5 @@
+# docker top 命令用于查看容器中正在运行的进程
+docker top CONTAINER [ps OPTIONS]
+
+# 用例一：查看 lamp-test 容器中正在运行的进程
+docker top lamp-test
