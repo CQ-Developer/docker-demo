@@ -14,6 +14,7 @@ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
    --tmpfs string             给容器提供常驻内存的临时文件系统
 -e,--env list                 注入环境变量
    --restart string           指定容器自动重启的策略
+   --entrypoint string        指定要运行的入口点程序
 
 # 用例一：在后台运行一个nginx
 docker run -d --name nginx-service nginx:lastest
@@ -48,3 +49,8 @@ docker run -e MY_ENVIRONMENT_VAR="this is a test" busybox:1.29 env
 
 # 用例七：创建一个始终重启并打印时间的容器
 docker run -d --name backoff-detector --restart always busybox:1.29 date
+
+# 用例八：指定入口点程序
+# 使用 cat 作为入口点
+# 将默认的入口点脚本的完整路径作为参数传递给cat
+docker run --entrypoint cat wordpress:5.0.0-php7.2-apache /usr/local/bin/docker-entrypoint.sh
