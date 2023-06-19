@@ -1,0 +1,6 @@
+# docker diff 命令用来检查软件更改了容器中的哪些文件系统
+docker diff CONTAINER
+
+# 用例一
+# 检查 wp 容器中更改了哪些文件或目录
+docker diff wp
