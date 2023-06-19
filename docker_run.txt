@@ -3,7 +3,7 @@ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 
 # OPTIONS
    --name string              为容器分配一个名称
--d,--detach                   让容器在后台运行，也就是说容器内部的STDIN和STDOUT不会链接到当前的虚拟终端
+-d,--detach                   让容器在后台运行
 -i,--interactive              打开STDIN，即使没有链接到虚拟终端
 -t,--tty                      为容器分配一个虚拟终端
    --link <name|id>[:alias]   添加一个到其他容器的链接，并且可以为该链接指定一个别名
@@ -13,6 +13,7 @@ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 -v string                     从主机挂载一个可写的目录
    --tmpfs string             给容器提供常驻内存的临时文件系统
 -e,--env list                 注入环境变量
+   --restart string           指定容器自动重启的策略
 
 # 用例一：在后台运行一个nginx
 docker run -d --name nginx-service nginx:lastest
@@ -44,3 +45,6 @@ docker run -d --name wpdb -e MYSQL_ROOT_PASSWORD=ch2demo mysql:5.7
 # 通过 -e 注入环境变量，并查看容器的环境变量
 # 通过 env 命令查看容器中的环境变量
 docker run -e MY_ENVIRONMENT_VAR="this is a test" busybox:1.29 env
+
+# 用例七：创建一个始终重启并打印时间的容器
+docker run -d --name backoff-detector --restart always busybox:1.29 date
