@@ -1,0 +1,11 @@
+# docker inspect 命令通常用于显示 Docker 为容器维护的所有元数据
+docker inspect [OPTIONS] NAME|ID [NAME|ID...]
+
+# OPTIONS
+-f,--format string   用于转换元数据的格式
+-s,--size            显示容器使用的总文件大小
+   --type string     返回指定类型的JSON数据
+
+# 用例一
+# 显示名为wp容器的运行状态
+docker inspect --format "{{.State.Running}}" wp
