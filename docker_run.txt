@@ -1,0 +1,46 @@
+# docker run 命令用于运行一个容器
+docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+# OPTIONS
+   --name string              为容器分配一个名称
+-d,--detach                   让容器在后台运行，也就是说容器内部的STDIN和STDOUT不会链接到当前的虚拟终端
+-i,--interactive              打开STDIN，即使没有链接到虚拟终端
+-t,--tty                      为容器分配一个虚拟终端
+   --link <name|id>[:alias]   添加一个到其他容器的链接，并且可以为该链接指定一个别名
+   --pid string               为容器指定一个PID命令空间
+   --cidfile string           将新容器的ID写入指定文件
+   --read-only                将容器的根文件系统设为只读
+-v string                     从主机挂载一个可写的目录
+   --tmpfs string             给容器提供常驻内存的临时文件系统
+-e,--env list                 注入环境变量
+
+# 用例一：在后台运行一个nginx
+docker run -d --name nginx-service nginx:lastest
+
+# 用例二：启动一个busybox
+# 通过 -i 将STDIN链接到虚拟终端
+# 通过 -t 分配一个新的虚拟终端
+# 通过 --link 链接到名为 nginx-web 的容器
+# 在容器中执行 /bin/sh 命令
+docker run --name nginx-test -it --link nginx-server:web busybox:1.29 /bin/sh
+
+# 用例三
+# 启动一个新的容器并执行ps命令列出当前计算器上的所有进程
+docker run --pid host busybox:1.29 ps
+
+# 用例四：运行 wordpress:5.0.0-php7.2-apache 镜像
+# 通过 --link 创建到容器 wpdb 的链接
+# 通过 -p 将容器的 80 端口绑定到主机的 8000 端口
+# 通过 --read-only 将容器的根文件系统设为只读
+# 通过 -v 从主机挂载一个可写目录
+# 通过 --tmpfs 给容器提供常驻内存的临时文件系统
+docker create --link wpdb:mysql -p 8000:80 --read-only -v /run/apache2/ --tmpfs /tmp wordpress:5.0.0-php7.2-apache
+
+# 用例五：启动一个mysql数据库
+# 通过 -e 设置容器环境变量，此处为指定root用户密码
+docker run -d --name wpdb -e MYSQL_ROOT_PASSWORD=ch2demo mysql:5.7
+
+# 用例六：查看容器的环境变量
+# 通过 -e 注入环境变量，并查看容器的环境变量
+# 通过 env 命令查看容器中的环境变量
+docker run -e MY_ENVIRONMENT_VAR="this is a test" busybox:1.29 env

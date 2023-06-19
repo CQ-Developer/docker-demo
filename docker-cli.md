@@ -83,28 +83,6 @@ $ docker restart hello
 $ docker logs -f hello
 ```
 
-## 7.run
-`run`命令用于从一个镜像中运行一个新容器，语法：
-> *docker run [options] image [command] [arg...]*
-```text
-[options]
-   --name <string>            为启动的容器分配一个名称
--d --detach                   让容器在后台运行
-                              也就是说容器内部的标准输入输出不会链接到当前的虚拟终端
--i --interactive              打开STDIN(即使没有连接虚拟终端)
--t --tty                      为容器分配一个虚拟终端
-   --link <name|id>[:alias]   添加一个到其他容器的连接并可以为该连接指定一个别名
-   --pid <string>             为容器指定一个PID命名空间
-   --cidfile <string>         用于将新容器的id写入文件中
-```
-```shell
-# 在后台启动一个nginx
-$ docker run --name nginx-service -d nginx:lastest
-# 启动一个busybox并绑定标准输入
-$ dcker run --name nginx-test -it --link nginx-service:web busybox:1.29 /bin/sh
-# 启动一个新的容器并执行ps命令列出当前计算器上的所有进程
-$ docker run --pid host busybox:1.29 ps
-```
 
 ## 8.exec
 `exec`在一个运行的容器中执行一个命令，语法：
