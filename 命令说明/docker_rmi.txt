@@ -1,0 +1,9 @@
+# docker rmi
+# 用于删除镜像
+docker rmi [OPTIONS] IMAGE [IMAGE...]
+
+# OPTIONS
+-f,--force
+    强制删除
+--no-prune
+    不删除未打标记的父镜像
