@@ -10,3 +10,15 @@ docker rm [OPTIONS] CONTAINER [CONTAINER...]
     移除容器的链接
 -v,--volumes
     移除与容器关联的匿名卷
+
+# 例一
+# 删除已停止的容器
+docker rm some-stopped-container
+
+# 例二
+# 强制删除运行中的容器
+docker rm -f some-running-container
+
+# 例三
+# 强制删除所有容器
+docker rm -f $(docker ps -a -q)
