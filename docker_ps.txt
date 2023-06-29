@@ -22,4 +22,4 @@ docker ps -a
 
 # 例三
 # 列出所有容器的完整ID
-docker ps -a -q --no-trunc
+docker ps -aq --no-trunc
