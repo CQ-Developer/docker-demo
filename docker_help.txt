@@ -1,0 +1,7 @@
+# docker help
+# 用于查看帮助命令
+docker help [command]
+
+# 例一
+# 查看ps命令的具体情况
+docker help ps
