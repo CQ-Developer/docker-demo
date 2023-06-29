@@ -1,0 +1,3 @@
+# docker create
+# 用于创建一个容器，和run命令相似，但创建的容器不会直接启动
+docker create [OPTIONS] IMAGE [COMMAND] [ARG...]
