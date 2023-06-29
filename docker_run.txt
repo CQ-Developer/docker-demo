@@ -2,19 +2,34 @@
 docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 
 # OPTIONS
-   --name string              为容器分配一个名称
--d,--detach                   让容器在后台运行
--i,--interactive              打开STDIN，即使没有链接到虚拟终端
--t,--tty                      为容器分配一个虚拟终端
-   --link <name|id>[:alias]   添加一个到其他容器的链接，并且可以为该链接指定一个别名
-   --pid string               为容器指定一个PID命令空间
-   --cidfile string           将新容器的ID写入指定文件
-   --read-only                将容器的根文件系统设为只读
--v string                     从主机挂载一个可写的目录
-   --tmpfs string             给容器提供常驻内存的临时文件系统
--e,--env list                 注入环境变量
-   --restart string           指定容器自动重启的策略
-   --entrypoint string        指定要运行的入口点程序
+--name string
+   为容器分配一个名称
+-d,--detach
+   让容器在后台运行
+-i,--interactive
+   打开STDIN，即使没有链接到虚拟终端
+-t,--tty
+   为容器分配一个虚拟终端
+--link <name|id>[:alias]
+   添加一个到其他容器的链接，并且可以为该链接指定一个别名
+--pid string
+   为容器指定一个PID命令空间
+--cidfile string
+   将新容器的ID写入指定文件
+--read-only
+   将容器的根文件系统设为只读
+-v string
+   从主机挂载一个可写的目录
+--tmpfs string
+   给容器提供常驻内存的临时文件系统
+-e,--env list
+   注入环境变量
+--restart string
+   指定容器自动重启的策略
+--entrypoint string
+   指定要运行的入口点程序
+--rm
+   容器退出后自动删除
 
 # 用例一：在后台运行一个nginx
 docker run -d --name nginx-service nginx:lastest
@@ -54,3 +69,7 @@ docker run -d --name backoff-detector --restart always busybox:1.29 date
 # 使用 cat 作为入口点
 # 将默认的入口点脚本的完整路径作为参数传递给cat
 docker run --entrypoint cat wordpress:5.0.0-php7.2-apache /usr/local/bin/docker-entrypoint.sh
+
+# 例九
+# 启动一个容器并在退出后立即删除容器
+docker run --rm --name auto-exit-test busybox:1.29 echo HelloWorld
