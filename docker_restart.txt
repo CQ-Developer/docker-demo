@@ -1,0 +1,9 @@
+# docker restart
+# 用于重启容器
+docker restart [OPTIONS] CONTAINER [CONTAINER...]
+
+# OPTIONS
+-s,--signal <string>
+    发送一个string信号给容器，用于停止容器
+-t,--time <int>
+    在停止容器前最长等待int秒
