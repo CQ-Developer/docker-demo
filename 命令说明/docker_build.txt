@@ -5,3 +5,7 @@ docker build [OPTIONS] PATH | URL | -
 # OPTIONS
 -t,--tag <name[:tag]>
     设置镜像的名称和标签，标签默认为latest
+
+# 例一
+# 从ch3_dockerfile目录构建名为dia_ch3/dockerfile:latest镜像
+docker build -t dia_ch3/dockerfile:lastest ch3_dockerfile
