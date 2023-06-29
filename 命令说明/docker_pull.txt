@@ -1,0 +1,12 @@
+# docker pull
+# 用于下载镜像
+docker pull [OPTIONS] NAME[:TAG|@DIGEST]
+
+# OPTIONS
+-a.--all-tags
+    从仓库中下载所有被打过标签的镜像
+    一般情况下可以下载当前软件的所有版本
+-q,--quiet
+    安静模式，关闭大部分输出
+--disable-content-trust
+    不跳过镜像校验，默认情况下会跳过
