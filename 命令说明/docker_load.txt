@@ -1,0 +1,13 @@
+# docker load
+# 用于从tar文件或STDIN中加载镜像
+docker load [OPTIONS]
+
+# OPTIONS
+-i,--input <string>
+    从tar文件中加载镜像，而不是STDIN
+-q,--quiet
+    忽略大部分加载过程中的输出
+
+# 例一
+# 从myfile.tar文件中加载镜像
+docker load -i myfile.tar
