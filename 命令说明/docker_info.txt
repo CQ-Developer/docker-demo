@@ -1,0 +1,11 @@
+# docker info
+# 用于显示docker系统级别信息
+docker info [OPTIONS]
+
+# OPTIONS
+-f,--format <string>
+    格式化输出信息
+
+# 例一
+# 显示docker的系统信息
+docker info
