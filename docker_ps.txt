@@ -3,10 +3,14 @@
 docker ps [OPTIONS]
 
 # OPTIONS
--a,--all   列出所有容器
--n,--lastest <n>   列出最后创建的n个容器(任何状态)
---no-trunc   完整的输出容器ID
---quiet   仅列出容器ID
+-a,--all
+    列出所有容器
+-n,--lastest <n> 
+    列出最后创建的n个容器(任何状态)
+--no-trunc
+    完整的输出容器ID
+-q,--quiet
+    仅列出容器ID
 
 # 例一
 # 列出当前正在运行的容器
@@ -18,4 +22,4 @@ docker ps -a
 
 # 例三
 # 列出所有容器的完整ID
-docker ps -a --quiet --no-trunc
+docker ps -a -q --no-trunc
