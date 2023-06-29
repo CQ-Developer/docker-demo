@@ -4,6 +4,7 @@ docker stop [OPTIONS] CONTAINER [CONTAINER...]
 
 # OPTIONS
 -s,--signal <string>
-    向容器发送一个信号
+    向容器发送一个string信号
+    默认情况下会发送KILLHUB信号，让进程有时间做一些清理工作
 -t,--time <int>
     在杀死容器前等待int秒

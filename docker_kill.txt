@@ -1,0 +1,8 @@
+# docker kill
+# 立即终止运行中的容器
+docker kill [OPTIONS] CONTAINER [CONTAINER...]
+
+# OPTIONS
+-s,--signal <string>
+    发送一个string信号给容器
+    默认情况下直接发送SIGKILL信号立即终止进程

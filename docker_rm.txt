@@ -3,6 +3,10 @@
 docker rm [OPTIONS] CONTAINER [CONTAINER...]
 
 # OPTIONS
--f,--force   强制删除容器(即使正在运行)
--l,--link   移除容器的链接
--v,--volumes   移除与容器关联的匿名卷
+-f,--force
+    强制删除容器(即使正在运行)
+    直接发送SIGKILL信号，立即终止进程
+-l,--link
+    移除容器的链接
+-v,--volumes
+    移除与容器关联的匿名卷
