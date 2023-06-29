@@ -1,0 +1,15 @@
+# docker version
+# 用于显示各组件的版本信息
+docker version [OPTIONS]
+
+# OPTIONS
+-f.--format <string>
+    格式化数据结果
+
+# 例一
+# 列出docker的版本
+docker -v
+
+# 例二
+# 列出docker各组件版本
+docker version
