@@ -1,0 +1,3 @@
+# docker rename
+# 用于重命名容器
+docker rename CONTAINER NEW_NAME
