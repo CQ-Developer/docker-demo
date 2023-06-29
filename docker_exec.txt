@@ -1,0 +1,21 @@
+# docker exec
+# 用于在一个运行的容器中执行命令
+docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
+
+# OPTIONS
+-d,--detach
+    分离模式，在后台运行命令
+-i,--interactive
+    将STDIN连接到当前虚拟终端
+-t,--tty
+    分配一个新的虚拟终端
+-e,--env <list>
+    设置运行命令需要使用的环境便令
+-u,--user <name|uid>[:<group|gid>]
+    设置运行命令使用的用户名或UID
+-w,--workdir <string>
+    设置运行命令所在的工作目录
+
+# 例一
+# 打开一个虚拟终端在容器中运行一个shell环境
+docker exec -it some-container sh
