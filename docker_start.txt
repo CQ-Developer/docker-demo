@@ -1,0 +1,9 @@
+# docker start
+# 用于启动容器
+docker start [OPTIONS] CONTAINER [CONTAINER...]
+
+# OPTIONS
+-a,--attach
+    将STDOUT/STDERR连接到当前的虚拟终端
+-i,--interactive
+    连接到容器的STDIN
