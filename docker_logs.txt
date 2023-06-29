@@ -1,0 +1,19 @@
+# docker logs
+# 用于查询容器运行的日志
+docker logs [OPTIONS] CONTAINER
+
+# OPTIONS
+-f,--follow
+    持续跟踪日志的输出
+-n,--tail <string>
+    仅显示最后string行信息，默认all
+-t,--timestamps
+    在日志中显示时间戳信息
+--detail
+    在日志中展示一些额外信息
+--since <string>
+    显示指定时间之后的信息
+    时间格式"2013-01-02T13:23:37Z"
+--until <string>
+    显示指定时间之前的信息
+    时间格式"2013-01-02T13:23:37Z"
