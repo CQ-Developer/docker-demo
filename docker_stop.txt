@@ -1,0 +1,9 @@
+# docker stop
+# 用于停止运行中的容器
+docker stop [OPTIONS] CONTAINER [CONTAINER...]
+
+# OPTIONS
+-s,--signal <string>
+    向容器发送一个信号
+-t,--time <int>
+    在杀死容器前等待int秒
