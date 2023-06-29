@@ -1,0 +1,11 @@
+# docker save
+# 用于将镜像保存到文件中
+docker save [OPTIONS] IMAGE [IMAGE...]
+
+# OPTIONS
+-o,--output <string>
+    将镜像保存到指定文件中，而不是STDOUT
+
+# 例一
+# 将镜像busybox:latest保存到文件myfile.tar中
+docker save -o myfile.tar busybox:latest
