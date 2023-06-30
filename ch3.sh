@@ -24,3 +24,10 @@ docker build -t dia_ch3/dockerfile:lastest ch3_dockerfile
 # 清理
 docker rmi dia_ch3/dockerfile:lastest
 rm -rf ch3_dockerfile
+
+# 查看拉取镜像的过程
+docker pull dockerinaction/ch3_myapp
+docker pull dockerinaction/ch3_myotherapp
+
+# 清理
+docker rmi dockerinaction/ch3_myapp:latest dockerinaction/ch3_myotherapp:latest
