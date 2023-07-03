@@ -30,6 +30,8 @@ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
    指定要运行的入口点程序
 --rm
    容器退出后自动删除
+--mount
+   将文件系统挂载到容器
 
 # 用例一：在后台运行一个nginx
 docker run -d --name nginx-service nginx:lastest
