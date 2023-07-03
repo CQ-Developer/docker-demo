@@ -18,3 +18,13 @@ docker run -d --name diaweb \
 nginx:latest
 # 测试只读
 docker exec diaweb sed "s/listen 80/listen 8080/" /etc/nginx/conf.d/default.conf
+# 清理
+docker rm -f diaweb
+
+# 将基于内存的文件系统挂载到容器文件树
+# 创建空的tmpfs设备，并附加到容器文件树的/tmp位置
+docker run --rm --mount type=tmpfs,dst=/tmp --entrypoint mount alpine:latest -v
+# 默认情况下tmpfs设备没有大小限制并且可以写入
+# 通过参数tmpfs-size和tmpfs-mode进行更改
+# 改命令可以将/tmp位置安装的tmpfs设备大小限制在16k，并且容器中其他用户无法访问
+docker run --rm --mount type=tmpfs,dst=/tmp,tmpfs-size=16k,tmpfs-mode=1770 --entrypoint mount alpine:latest -v
