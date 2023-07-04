@@ -77,3 +77,14 @@ cat /tmp/web-logs-example/logA
 docker rm -f plath
 # 删除日期文件
 rm -rf /tmp/web-logs-example/
+
+# 创建卷
+docker volume create --driver local logging-example
+# 将卷挂载到日志写入容器
+docker run -d --name plath --mount type=volume,src=logging-example,dst=/data dockerinaction/ch4_writer_a
+# 将同样的卷挂载到用于读取的容器
+docker run --rm --mount type=volume,src=logging-example,dst=/data alpine:latest head /data/logA
+# 查看主机日志
+sudo cat /var/lib/docker/volumes/logging-example/_data/logA
+# 停止容器
+docker rm -f plath
