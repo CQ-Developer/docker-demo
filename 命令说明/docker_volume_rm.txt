@@ -1,0 +1,11 @@
+# docker volume rm
+# 用于删除卷
+docker volume rm [OPTIONS] VOLUME [VOLUME...]
+
+# [OPTIONS]
+-f,--force
+    强制删除卷
+
+# 例一
+# 删除名为location-example的卷
+docker volume rm -f location-example

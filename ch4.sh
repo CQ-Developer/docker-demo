@@ -33,3 +33,34 @@ docker run --rm --mount type=tmpfs,dst=/tmp,tmpfs-size=16k,tmpfs-mode=1770 --ent
 docker volume create --driver local --label example=location location-example
 # 检查卷
 docker volume inspect --format "{{json .Mountpoint}}" location-example
+# 删除卷
+docker volume rm location-example
+
+# 创建Cassandra数据库共享的卷
+docker volume create --driver local --label example=cassandra cass-shared
+# 运行Cassandra数据库并使用这个卷
+docker run -d --name cass1 --volume cass-shared:/var/lib/cassandra/data cassandra:2.2
+# 运行Cassandra客户端
+docker run -it --rm --link cass1:cass cassandra:2.2 cqlsh cass
+# 查询是否存在键空间'docker_hello_world'
+select * from system.schema_keyspaces where keyspace_name = 'docker_hello_world';
+# 创建名为'docker_hello_world'的键空间
+create keyspace docker_hello_world with replication = {'class':'SimpleStrategy','replication_factor':1};
+# 退出客户端
+quit
+# 删除容器
+docker stop cass1
+docker rm -vf cass1
+# 创建另一个容器
+docker run -d --name cass2 --volume cass-shared:/var/lib/cassandra/data cassandra:2.2
+# 运行Cassandra客户端
+docker run -it --rm --link cass2:cass cassandra:2.2 cqlsh cass
+# 查询是否存在键空间'docker_hello_world'
+select * from system.schema_keyspaces where keyspace_name = 'docker_hello_world';
+# 退出客户端
+quit
+# 删除容器
+docker stop cass2
+docker rm -vf cass2
+# 删除卷
+docker volume rm cass-shared
