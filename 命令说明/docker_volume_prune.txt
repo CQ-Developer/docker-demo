@@ -4,12 +4,12 @@ docker volume prune [OPTIONS]
 
 # [OPTIONS]
 -a,--all
-    删除所有未使用的卷
+    删除所有未使用的卷，不仅时匿名卷
 --filter <filter>
     仅删除label符合过滤条件的卷
 -f,--force
     不提示直接删除，默认情况下会需要确认
 
 # 例一
-# 删除还有标签example=location的卷，不需要进行提示
-docker volume prune -f --filter example=location
+# 删除所有标签example=location的卷，不需要进行提示
+docker volume prune -af --filter label=example=location
