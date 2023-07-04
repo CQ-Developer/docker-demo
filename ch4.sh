@@ -108,3 +108,8 @@ docker run --name student --volumes-from chomsky --volumes-from lamport alpine:l
 docker inspect -f "{{json .Mounts}}" student
 # 清理
 docker rm -fv $(docker ps -aq)
+
+# 查看有哪些卷
+docker volume ls
+# 清理所有卷
+docker volume rm $(docker volume ls -q)

@@ -1,0 +1,19 @@
+# docker volume ls
+# 用于查看当前所有的卷
+docker volume ls [OPTIONS]
+
+# [OPTIONS]
+-f,--filter <filter>
+    过滤出符合要求的卷
+--format <string>
+    格式化输出
+-q,--quiet
+    仅显示卷的名称
+
+# 例一
+# 过滤出未被容器引用的卷
+docker volume ls -f dangling=true
+
+# 例二
+# 输出<卷名: 卷驱动>格式
+docker volume ls --format "{{.Name}}: {{.Driver}}"
