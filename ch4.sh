@@ -88,3 +88,15 @@ docker run --rm --mount type=volume,src=logging-example,dst=/data alpine:latest 
 sudo cat /var/lib/docker/volumes/logging-example/_data/logA
 # 停止容器
 docker rm -f plath
+
+# 运行容器自动绑定到匿名卷
+docker run --name fowler --mount type=volume,dst=/library/PoEAA --mount type=bind,src=/tmp,dst=/library/DSL alpine:latest echo "Fowler collection created."
+docker run --name knuth --mount type=volume,dst=/library/TAoCP.vo11 --mount type=volume,dst=/library/TAoCP.vo12 --mount type=volume,dst=/library/TAoCP.vo13 --mount type=volume,dst=/library/TAoCP.vo14.a alpine:latest echo "Knuth collection created"
+# 列出被复制到新容器中的所有卷
+docker run --name reader --volumes-from fowler --volumes-from knuth alpine:latest ls -l /library/
+# 检查reader容器的卷列表
+docker inspect --format "{{json .Mounts}}" reader
+# 创建一个聚合了多个卷的容器
+docker run --name aggregator --volumes-from fowler --volumes-from knuth alpine:latest echo "Collection Created."
+# 从单一源容器使用卷并列出他们
+docker run --rm --volumes-from aggregator alpine:latest ls -l /library/
