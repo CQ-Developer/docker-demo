@@ -28,3 +28,8 @@ docker run --rm --mount type=tmpfs,dst=/tmp --entrypoint mount alpine:latest -v
 # 通过参数tmpfs-size和tmpfs-mode进行更改
 # 改命令可以将/tmp位置安装的tmpfs设备大小限制在16k，并且容器中其他用户无法访问
 docker run --rm --mount type=tmpfs,dst=/tmp,tmpfs-size=16k,tmpfs-mode=1770 --entrypoint mount alpine:latest -v
+
+# 创建卷
+docker volume create --driver local --label example=location location-example
+# 检查卷
+docker volume inspect --format "{{json .Mountpoint}}" location-example

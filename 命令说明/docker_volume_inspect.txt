@@ -1,0 +1,11 @@
+# docker volume inspect
+# 用于展示卷的详细信息
+docker volume inspect [OPTIONS] VOLUME [VOLUME...]
+
+# [OTPIONS]
+-f,--format <string>
+    格式化输出
+
+# 例一
+# 查看名为location-example的卷的挂载点
+docker volume inspect --format "{{json .Mountpoint}}" location-example

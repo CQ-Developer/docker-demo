@@ -1,0 +1,13 @@
+# docker volume create
+# 用于创建卷
+docker volume create [OPTIONS] [VOLUME]
+
+# [OPTIONS]
+-d,--driver <string>
+    指定卷的驱动名称，默认local
+--label <list>
+    设置卷的元数据
+
+# 例一
+# 创建一个名为 location-example 的卷
+docker volume create --driver local --label example=location location-example
