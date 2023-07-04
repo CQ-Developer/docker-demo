@@ -64,3 +64,16 @@ docker stop cass2
 docker rm -vf cass2
 # 删除卷
 docker volume rm cass-shared
+
+# 创建文件夹
+mkdir /tmp/web-logs-example
+# 运行容器向文件夹中写入日志
+docker run -d --name plath --mount type=bind,src=/tmp/web-logs-example,dst=/data dockerinaction/ch4_writer_a
+# 运行容器读取日志
+docker run --rm --mount type=bind,src=/tmp/web-logs-example,dst=/data alpine:latest head /data/logA
+# 查看主机上的日志
+cat /tmp/web-logs-example/logA
+# 删除容器
+docker rm -f plath
+# 删除日期文件
+rm -rf /tmp/web-logs-example/
