@@ -1,0 +1,22 @@
+# docker network ls
+# 用于列出网络信息
+docker networks ls [OPTIONS]
+
+# [OPTIONS]
+-f,--filter <filter>
+    添加一个过滤器，仅显示符合过滤条件的网络
+    比如：网络类型为桥接，driver=bridge
+--format <string>
+    格式化输出信息
+--no-trunc
+    完整的输出网络ID
+-q,-quiet
+    仅输出网络的ID
+
+# 例一
+# 列出所有网络
+docker network ls
+
+# 例二
+# 列出所有驱动为bridge的网络
+docker network ls -f driver=bridge
