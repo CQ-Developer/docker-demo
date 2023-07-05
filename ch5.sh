@@ -33,3 +33,10 @@ docker attach network-explorer
 nmap -sn 10.0.42.* -sn 10.0.43.* -oG /dev/stdout | grep Status
 # 可以根据名称发现网络
 nslookup lighthouse
+
+# 将容器连接到主机网络
+docker run --rm --network host alpine:3.8 ip -o addr
+# 将容器连接none网络
+docker run --rm --network none alpine:3.8 ip -o addr
+# 容器内运行的任何程序都无法访问容器外网络
+docker run --rm --network none alpine:3.8 ping -w 2 1.1.1.1

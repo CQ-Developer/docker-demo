@@ -34,6 +34,8 @@ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
    将文件系统挂载到容器
 --hostname <string>
    指定容器的主机名，默认为容器名称
+--network <network>
+   将容器连接到指定网络
 
 # 用例一：在后台运行一个nginx
 docker run -d --name nginx-service nginx:lastest
