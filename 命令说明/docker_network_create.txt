@@ -1,0 +1,20 @@
+# docker network create
+# 用于创建网络
+docker network create [OPTIONS] NETWORK
+
+# [OPTIONS]
+-d,--driver <string>
+--label <list>
+    为网络设置一些标签元数据
+--attachable
+    把网络标记为可连接的，将来随时可以对容器与网络进行连接或分离
+--scope <string>
+    指定网络范围
+--subnet <strings>
+    定义子网掩码
+--ip-range <string>
+    定义可分配的IP地址范围
+
+# 例一
+# 创建一个名为 user-network 的新网络
+docker network create --driver bridge --label project=dockerinaction --label chapter=5 --attachable --scope local --subnet 10.0.42.0/24 --ip-range 10.0.42.128/25 user-network

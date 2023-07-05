@@ -1,0 +1,7 @@
+# docker attach
+# 用于将终端连接到容器
+docker attach [OPTIONS] CONTAINER
+
+# 例一
+# 连接到容器 network-explorer
+docker attach network-explorer

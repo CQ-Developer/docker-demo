@@ -1,0 +1,7 @@
+# docker network connect
+# 用于将容器连接到指定网络
+docker network connect [OPTIONS] NETWORK CONTAINER
+
+# 例一
+# 将容器 network-explorer 连接到网络 user-network2 上
+docker network connect user-network2 network-explorer
