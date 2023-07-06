@@ -50,6 +50,11 @@ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
    限制容器的内存大小，可选单位：b、k、m、g
 -c,--cpu-shares <int>
    设置各容器键的CPU相对权重
+--cpuset-cpus
+   将容器的运行绑定在特定的CPU上，比如：
+   0表示运行在0号CPU上
+   0-3表示运行在0到3号CPU上
+   0,1表示运行0号和1号CPU上
 
 # 用例一：在后台运行一个nginx
 docker run -d --name nginx-service nginx:lastest
