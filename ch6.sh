@@ -11,3 +11,6 @@ docker run -d -P --name ch6_wordpress -m 512m --cpus 0.75 --cap-drop net_raw --l
 # 将容器限定在CPU集合0上运行
 docker run -d --cpuset-cpus 0 --name ch6_stresser --rm dockerinaction/ch6_stresser
 docker run -it --rm dockerinaction/ch6_htop
+
+# 将主机设备/dev/sda暴露到容器的/dev/xvdc位置
+docker run --device /dev/sda:/dev/xvdc --rm -it ubuntu ls -Al /dev

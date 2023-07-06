@@ -55,6 +55,9 @@ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
    0表示运行在0号CPU上
    0-3表示运行在0到3号CPU上
    0,1表示运行0号和1号CPU上
+--device <list>
+   将主机上的设备暴露给容器使用，格式：主机设备:容器设备位置:权限
+   默认权限时rwm：read、write、mknod
 
 # 用例一：在后台运行一个nginx
 docker run -d --name nginx-service nginx:lastest
