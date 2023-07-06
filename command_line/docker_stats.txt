@@ -1,0 +1,13 @@
+# docker stats
+# 用于实时跟踪展示容器的资源使用情况，类似于top命令
+docker stats [OPTIONS] [CONTAINER...]
+
+# [OPTIONS]
+-a,--all
+    显示所有容器，默认情况下只显示运行中的容器
+--format <string>
+    格式化输出
+--no-stream
+    仅显示以此而不进行实时跟踪
+--no-trunc
+    输出完整的容器ID，默认只显示部分容器ID
