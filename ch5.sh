@@ -40,3 +40,15 @@ docker run --rm --network host alpine:3.8 ip -o addr
 docker run --rm --network none alpine:3.8 ip -o addr
 # 容器内运行的任何程序都无法访问容器外网络
 docker run --rm --network none alpine:3.8 ping -w 2 1.1.1.1
+
+# 从主机随机选取一个端口转发到容器的8080端口
+docker run --rm -p 8080 alpine:3.8 echo "forward ephemeral TCP -> container TCP 8080"
+# 将主机的UDP协议8080端口转发到容器的8080端口
+docker run --rm -p 8080:8080/udp alpine:3.8 echo "host UDP 8080 -> container UDP 8080"
+# 将主机的TCP协议的8080端口转发到容器的8080端口
+docker run --rm -p 127.0.0.1:8080:8080/tcp -p 127.0.0.1:3000:3000/tcp alpine:3.8 echo "forward multiple TCP ports from localhost"
+# 查看转发流量到给定容器的端口列表
+docker run -d -p 8080 --name listener --rm alpine:3.8 sleep 300
+docker port listener
+docker run -d -p 8080 -p 3000 -p 7500 --name multi-listener --rm alpine:3.8 sleep 300
+docker port listener 3000

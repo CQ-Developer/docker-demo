@@ -1,0 +1,11 @@
+# docker port
+# 用于查看容器的端口列表
+docker port CONTAINER [PRIVATE_PORT[/PROTO]]
+
+# 例一
+# 查看容器的端口列表
+docker port demo-container
+
+# 例二
+# 查看容器的指定端口映射
+docker port demo-container 8080

@@ -36,6 +36,9 @@ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
    指定容器的主机名，默认为容器名称
 --network <network>
    将容器连接到指定网络
+-p,--publish <list>
+   将容器中的一个端口发布到主机上
+   比如：0.0.0.0:8080:8080/tcp 意味着 主机接口:主机端口:目标端口/端口协议
 
 # 用例一：在后台运行一个nginx
 docker run -d --name nginx-service nginx:lastest
