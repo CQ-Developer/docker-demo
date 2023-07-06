@@ -39,6 +39,13 @@ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 -p,--publish <list>
    将容器中的一个端口发布到主机上
    比如：0.0.0.0:8080:8080/tcp 意味着 主机接口:主机端口:目标端口/端口协议
+--dns <list>
+   设置容器网络的DNS服务器地址，注意必须时IP地址
+--dns-search <list>
+   指定DNS搜索域名，类似于默认的主机后缀名。
+   比如指定--dns-search docker.com，如果搜索域名hub，则自动搜索hub.docker.com
+--add-host <list>
+   直接添加主机和IP的映射关键，格式为host:ip
 
 # 用例一：在后台运行一个nginx
 docker run -d --name nginx-service nginx:lastest

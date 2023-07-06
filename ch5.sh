@@ -52,3 +52,19 @@ docker run -d -p 8080 --name listener --rm alpine:3.8 sleep 300
 docker port listener
 docker run -d -p 8080 -p 3000 -p 7500 --name multi-listener --rm alpine:3.8 sleep 300
 docker port listener 3000
+
+# 设置容器的主机名并查看主机名对应的IP地址
+docker run --rm --hostname barker alpine:3.8 nslookup barker
+# 将容器的DNS服务器设置为Google的公共DNS服务
+docker run --rm --dns 8.8.8.8 alpine:3.8 nslookup docker.com
+# 指定搜索域名，会自动解析域名为hub.docker.com
+docker run --rm --dns-search docker.com alpine:3.8 nslookup hub
+# 查看DNS操作选项是如何修改/etc/resolv.conf文件的
+docker run --rm --dns-search docker.com --dns 1.1.1.1 alpine:3.8 cat /etc/resolv.conf
+# 使用DNS搜索域名构建环境敏感的软件
+docker run --rm --dns-search dev.mycompany alpine:3.8 nslookup myservice
+docker run --rm --dns-search test.mycompany alpine:3.8 nslookup myservice
+# 直接添加主机和IP的映射关系
+docker run --rm --add-host test:10.10.10.255 alpine:3.8 nslookup test
+# 查看自定义主机条目是如何修改/etc/hosts文件的
+docker run --rm --hostname mycontainer.com --add-host docker.com:127.0.0.1 --add-host test:10.10.10.2 alpine:3.8 cat /etc/hosts
