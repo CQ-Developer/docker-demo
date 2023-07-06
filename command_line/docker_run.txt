@@ -48,6 +48,8 @@ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
    直接添加主机和IP的映射关键，格式为host:ip
 -m,--memroy <bytes>
    限制容器的内存大小，可选单位：b、k、m、g
+-c,--cpu-shares <int>
+   设置各容器键的CPU相对权重
 
 # 用例一：在后台运行一个nginx
 docker run -d --name nginx-service nginx:lastest
