@@ -45,3 +45,24 @@ docker run --rm --user nobody busybox:1.29 id
 docker run --rm -u nobody:nogroup busybox:1.29 id
 # 也可以指定一个不存在的用户
 docker run --rm -u 10000:20000 busybox:1.29 id
+
+# 创建文件并设置为root用户只读
+echo "e=mc^2" > garbage
+chmod 600 garbage
+sudo chown root garbage
+# 使用nobody用户运行容器并尝试读取文件
+docker run --rm -v "$(pwd)/garbage:/test/garbage" -u nobody ubuntu:16.04 cat /test/garbage
+# 使用容器的root用户运行容器并尝试读取文件
+docker run --rm -v "$(pwd)/garbage:/test/garbage" -u root ubuntu:16.04 cat /test/garbage
+# 删除文件
+sudo rm -f garbage
+
+# 创建目录
+mkdir logFiles
+sudo chown 2000:2000 logFiles
+# 输出日志文件
+docker run --rm -v "$(pwd)/logFiles:/logFiles" -u 2000:2000 ubuntu:16.04 /bin/bash -c "echo This is important info > /logFiles/important.log"
+# 从另一个容器向日志文件添加内容
+docker run --rm -v "$(pwd)/logFiles:/logFiles" -u 2000:2000 ubuntu:16.04 /bin/bash -c "echo More info >> /logFiles/important.log"
+# 清理
+sudo rm -rf logFiles
