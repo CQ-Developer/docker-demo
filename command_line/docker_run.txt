@@ -60,6 +60,9 @@ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
    默认权限时rwm：read、write、mknod
 -- ipc <string>
    指定使用的IPC模式
+-u,--user <string>
+   设置容器的运行时用户
+   格式为：<name|uid>[:<group|gid>]
 
 # 用例一：在后台运行一个nginx
 docker run -d --name nginx-service nginx:lastest

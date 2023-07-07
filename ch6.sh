@@ -39,3 +39,9 @@ docker run  --rm --entrypoint "" busybox:1.29 whoami
 docker run  --rm --entrypoint "" busybox:1.29 id
 # 获取镜像中可用的用户列表
 docker run --rm busybox:1.29 awk -F: '{ print $1 }' /etc/passwd
+
+# 设置运行时用户为nobody
+docker run --rm --user nobody busybox:1.29 id
+docker run --rm -u nobody:nogroup busybox:1.29 id
+# 也可以指定一个不存在的用户
+docker run --rm -u 10000:20000 busybox:1.29 id
