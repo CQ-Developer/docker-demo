@@ -77,3 +77,9 @@ docker run --rm -u nobody ubuntu:16.04 capsh --print
 docker run --rm -u nobody --cap-drop net_raw ubuntu:16.04 capsh --print
 # 将sys_admin添加到功能集中
 docker run --rm -u nobody --cap-add sys_admin ubuntu:16.04 capsh --print
+
+# 以完全特权运行容器
+docker run --rm --privileged ubuntu:16.04 id
+docker run --rm --privileged ubuntu:16.04 capsh --print
+docker run --rm --privileged ubuntu:16.04 ls /dev
+docker run --rm --privileged ubuntu:16.04 networkctl

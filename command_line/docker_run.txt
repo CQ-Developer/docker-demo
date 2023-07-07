@@ -67,6 +67,9 @@ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
    添加Linux功能
 --cap-drop <list>
    删除Linux功能
+--privileged
+   授予容器扩展权限，也就是以完全特权运行容器
+   当需要在容器中运行系统管理任务时，可以授予容器对计算机的访问特权
 
 # 用例一：在后台运行一个nginx
 docker run -d --name nginx-service nginx:lastest
