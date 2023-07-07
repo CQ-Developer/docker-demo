@@ -14,3 +14,18 @@ docker run -it --rm dockerinaction/ch6_htop
 
 # 将主机设备/dev/sda暴露到容器的/dev/xvdc位置
 docker run --device /dev/sda:/dev/xvdc --rm -it ubuntu ls -Al /dev
+
+# 启动生产者并指定IPC命名空间
+docker run -d -u nobody --name ch6_ipc_producer --ipc shareable dockerinaction/ch6_ipc -producer
+docker run -d -u nobody --name ch6_ipc_consumer dockerinaction/ch6_ipc -consumer
+# 观察生产者和消费者的日志
+docker logs ch6_ipc_producer
+docker logs ch6_ipc_consumer
+# 删除消费者
+docker rm -fv ch6_ipc_consumer
+# 创建新的消费者并重用生产者的IPC命名空间
+docker run -d --name ch6_ipc_consumer --ipc container:ch6_ipc_producer dockerinaction/ch6_ipc -consumer
+docker logs ch6_ipc_producer
+docker logs ch6_ipc_consumer
+# 清理
+docker rm -fv ch6_ipc_consumer ch6_ipc_producer
