@@ -1,4 +1,5 @@
-# docker inspect 命令通常用于显示 Docker 为容器维护的所有元数据
+# docker inspect
+# 命令通常用于显示 Docker 为容器维护的所有元数据
 docker inspect [OPTIONS] NAME|ID [NAME|ID...]
 
 # OPTIONS
