@@ -83,3 +83,6 @@ docker run --rm --privileged ubuntu:16.04 id
 docker run --rm --privileged ubuntu:16.04 capsh --print
 docker run --rm --privileged ubuntu:16.04 ls /dev
 docker run --rm --privileged ubuntu:16.04 networkctl
+
+# 自定义容器的seccomp配置文件
+docker run --rm -it --security-opt seccomp=<FULL_PATH_TO_PROFILE> ubuntu:16.04 sh

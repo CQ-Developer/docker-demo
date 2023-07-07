@@ -70,6 +70,10 @@ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 --privileged
    授予容器扩展权限，也就是以完全特权运行容器
    当需要在容器中运行系统管理任务时，可以授予容器对计算机的访问特权
+--security-opt <list>
+   安全选项：用于指定配置Linux的seccomp和LSM(Linux Security Modules)
+   seccomp负责配置某个进程可以激活的Linux系统调用，Docker默认的seccomp配置文件在默认情况下会阻止所有系统调用，
+   不建议更改Docker默认的seccomp配置文件
 
 # 用例一：在后台运行一个nginx
 docker run -d --name nginx-service nginx:lastest
