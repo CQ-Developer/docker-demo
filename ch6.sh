@@ -66,3 +66,7 @@ docker run --rm -v "$(pwd)/logFiles:/logFiles" -u 2000:2000 ubuntu:16.04 /bin/ba
 docker run --rm -v "$(pwd)/logFiles:/logFiles" -u 2000:2000 ubuntu:16.04 /bin/bash -c "echo More info >> /logFiles/important.log"
 # 清理
 sudo rm -rf logFiles
+
+# Docker守护进程API
+# 将主机上的docker.sock套接字以只读文件的形式绑定到容器
+docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock:ro -u root monitoringtool
