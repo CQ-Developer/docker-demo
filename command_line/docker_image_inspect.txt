@@ -1,0 +1,12 @@
+# docker image inspect
+# 用于查看镜像的详细信息
+docker image inspect [OPTIONS] IMAGE [IMAGE...]
+
+# [OPTIONS]
+-f,--format <string>
+    格式化输出
+
+# 例一
+# 查看镜像默认的运行时用户
+# 空字符串意味着root用户
+docker image inspect -f "{{.Config.User}}" busybox:1.29

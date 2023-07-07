@@ -29,3 +29,13 @@ docker logs ch6_ipc_producer
 docker logs ch6_ipc_consumer
 # 清理
 docker rm -fv ch6_ipc_consumer ch6_ipc_producer
+
+# 查看镜像定义的运行时用户
+docker pull busybox:1.29
+docker image inspect busybox:1.29
+docker image inspect -f "{{.Config.User}}" busybox:1.29
+# 确定镜像的默认用户
+docker run  --rm --entrypoint "" busybox:1.29 whoami
+docker run  --rm --entrypoint "" busybox:1.29 id
+# 获取镜像中可用的用户列表
+docker run --rm busybox:1.29 awk -F: '{ print $1 }' /etc/passwd
