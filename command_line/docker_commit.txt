@@ -1,0 +1,17 @@
+# docker commit
+# 用于从被更改的容器中创建新的镜像
+docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]
+
+# [OPTIONS]
+-a,--author <string>
+    设置镜像的所有者
+-m,--message <string>
+    提交消息
+-p,--pause
+    在提交期间暂停容器，默认true
+-c,--change <list>
+    将Dockfile指定应用到被创建的镜像
+
+# 例一
+# 从容器hw_container中生成新的镜像hw_image
+docker commit hw_container hw_image
