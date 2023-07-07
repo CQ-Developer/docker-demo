@@ -70,3 +70,10 @@ sudo rm -rf logFiles
 # Docker守护进程API
 # 将主机上的docker.sock套接字以只读文件的形式绑定到容器
 docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock:ro -u root monitoringtool
+
+# 输入默认的功能集
+docker run --rm -u nobody ubuntu:16.04 capsh --print
+# 从功能集中删除net_raw
+docker run --rm -u nobody --cap-drop net_raw ubuntu:16.04 capsh --print
+# 将sys_admin添加到功能集中
+docker run --rm -u nobody --cap-add sys_admin ubuntu:16.04 capsh --print
