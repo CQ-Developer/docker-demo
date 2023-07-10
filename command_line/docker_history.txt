@@ -1,0 +1,17 @@
+# docker history
+# 用于列出镜像的历史信息(层级)
+docker history [OPTIONS] IMAGE
+
+# [OPTIONS]
+--format <string>
+    格式化输出
+-H,--human
+    大小和数据已更友好的方式显示，默认启用
+--no-trunc
+    不简化输出
+-q,--quiet
+    仅显示镜像ID
+
+# 例一
+# 查看镜像的历史记录
+docker history ubuntu-git:removed
