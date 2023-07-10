@@ -1,0 +1,11 @@
+# docker import
+# 用于将tarball文件的内容流式传输到新的镜像
+docker import [OPTIONS] file|URL|- [REPOSITORY:[TAG]]
+
+# [OPTIONS]
+-c,--change <list>
+    将Dokcerfile指定应用到创建的镜像中
+-m,--message <string>
+    为导入的镜像设置提交信息
+--platform <string>
+    如果服务支持多平台，则设置平台

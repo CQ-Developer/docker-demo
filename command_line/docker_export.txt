@@ -1,0 +1,7 @@
+# docker export
+# 用于把拉平的联合文件系统的内容以流的方式传输到STDOUT或tar包
+docker export [OPTIONS] CONTAINER
+
+# [OPTIONS]
+-o,--output <string>
+    写入文件而不是STDOUT
