@@ -5,6 +5,12 @@ docker build [OPTIONS] PATH | URL | -
 # OPTIONS
 -t,--tag <name[:tag]>
     设置镜像的名称和标签，标签默认为latest
+-f,--file <string>
+    Dockerfile的名称，默认为PATH/Dockerfile
+-q,--quiet
+    启动安静模式，仅输出成功构建的镜像的ID
+--no-cache
+    禁用缓存，默认会使用缓存，这样成功构建的步骤不会再次执行
 
 # 例一
 # 从ch3_dockerfile目录构建名为dia_ch3/dockerfile:latest镜像
