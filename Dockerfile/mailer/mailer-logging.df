@@ -7,3 +7,13 @@ RUN chmod a+x ${APPROOT}/${APP} && \
 USER example:example
 VOLUME ["/var/log"]
 CMD ["/var/log/mailer.log"]
+
+# COPY指定
+# 将文件从构建镜像的文件系统复制到构建的容器中
+#
+# 至少接收两个参数
+# 第一个参数是目标位置，其他参数是源文件
+#
+# 注意
+# 无论在执行COPY指令之前文件的默认用户是什么
+# 当复制完成之后，我呢见的所有权都会被重置为root
