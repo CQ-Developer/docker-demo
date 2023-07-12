@@ -1,0 +1,16 @@
+FROM dockerinaction/mailer-base:0.6
+ADD ["./live-impl", "${APPROOT}"]
+RUN apt-get update && \
+    apt-get install -y curl netcat python && \
+    curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py" && \
+    python get-pip.py && \
+    pip install awscli && \
+    rm get-pip.py && \
+    chmod a+x "${APPROOT}/${APP}"
+USER example:example
+CMD ["mailer@dockerinaction.com", "pager@dockerinaction.com"]
+
+# ADD指令
+# ADD指定类似COPY指令，但有2个重要区别：
+# 1.如果指定的URL，则获取远程源文件
+# 2.只要确定对象为存档文件，就自动提取其中的源文件
