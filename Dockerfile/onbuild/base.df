@@ -1,0 +1,11 @@
+FROM busybox:latest
+WORKDIR /app
+RUN touch /app/base-evidence
+ONBUILD RUN ls -Al /app
+
+# ONBUILD指令
+# 可以使用ONBUILD指定来编译由下游层级提供的程序代码
+# 在使用上有Dockerfile构建镜像时，不会执行ONBUILD之后的指令，
+# 而是将这些指令记录在生成的元数据ContainerConfig.OnBuild中
+# 当下游Dockerfile在FROM指令中使用上游镜像时，
+# 这些ONBUILD指令将在下游Dockerfile中的FROM指令之后和下一条指令之前执行
