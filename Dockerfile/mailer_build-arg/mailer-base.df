@@ -1,0 +1,24 @@
+FROM debian:buster-20190910
+
+# 定义VERSION变量并设置默认值为unknow
+ARG VERSION=unknow
+
+LABEL maintainer="dia@allingeek.com"
+RUN groupadd -r -g 2200 example && \
+    useradd -rM -g example -u 2200 example
+ENV APPROOT="/app" \
+    APP="mailer.sh" \
+    VERSION="${VERSION}"
+LABEL base.name="Mailer Archetype" \
+      base.version="${VERSION}"
+WORKDIR ${APPROOT}
+ADD . ${APPROOT}
+ENTRYPOINT ["/app/mailer.sh"]
+EXPOSE 33333
+
+# 在build时传递构建变量
+# version=0.6
+# docker build -t dockerinaction/mailer-base:${version} -f mailer-base.df --build-arg VERSION=${version} .
+
+# 验证镜像的标签 base.version 是否被成功替换
+# docker inspect --format '{{json .Config.Labels}}' dockerinaction/mailer-base:0.6
