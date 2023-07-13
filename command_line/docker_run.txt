@@ -74,6 +74,9 @@ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
    安全选项：用于指定配置Linux的seccomp和LSM(Linux Security Modules)
    seccomp负责配置某个进程可以激活的Linux系统调用，Docker默认的seccomp配置文件在默认情况下会阻止所有系统调用，
    不建议更改Docker默认的seccomp配置文件
+--init
+   用于在容器内运行init进程，以管理正在执行的程序
+   也可用于将init进程添加到现有镜像
 
 # 用例一：在后台运行一个nginx
 docker run -d --name nginx-service nginx:lastest
