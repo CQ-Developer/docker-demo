@@ -1,0 +1,17 @@
+# docker search
+# 用户在 Docker Hub 上搜索镜像
+docker search [OPTIONS] TERM
+
+[OPTIONS]
+-f,--filter <filter>
+    添加过滤器，用于筛选结果
+--limit <int>
+    返回的最多n个搜索结果
+
+# 示例
+# 搜索用户名dockerinaction的所有镜像
+docker search dockerinaction
+
+# 示例
+# 搜索mysql的官方镜像
+docker search -f is-official=true mysql
