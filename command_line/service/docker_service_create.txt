@@ -1,0 +1,17 @@
+# docekr service create
+# 用于创建服务
+docker service create [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+[OPTIONS]
+--name <string>
+    设置服务的名称
+-p,--publish <port>
+    将一个端口发布为节点的端口
+--replicas <uint>
+    设置副本任务的数量
+
+# 例一
+# 使用镜像 dockerinaction/ch11_service_hw:v1 创建服务
+# 指定服务名称为 hello-world
+# 将节点的 80 端口发布到主机的 8080 端口
+docker service create --publish 8080:80 --name hello-world dockerinaction/ch11_service_hw:v1
