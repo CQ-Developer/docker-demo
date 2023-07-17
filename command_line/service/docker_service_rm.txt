@@ -1,0 +1,7 @@
+# docker service rm
+# 用于删除服务
+docker service rm SERVICE [SERVICE...]
+
+# 例一
+# 删除 hello-world 服务
+docker service rm hello-world
