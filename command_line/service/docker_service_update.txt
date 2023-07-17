@@ -1,0 +1,47 @@
+# docker service update
+# 用于更新服务
+docker service update [OPTIONS] SERVICE
+
+[OPTIONS]
+--image <string>
+    使用指定的镜像
+--update-order <string>
+    设置更新顺序，可选值有start-first、stop-first
+--update-parallelism <uint>
+    同时更新的最大任务数，0表示同时更新所有任务
+--update-delay <duration>
+    每个任务更新间的延迟时间，可用时间单位：ns、us、ms、s、m、h
+--rollback
+    使不符合期望的服务副本回滚到之前的状态
+--update-failure-action <string>
+    设置更新时失败的默认行为，可选值：pause、continue、rollback
+--update-max-failure-ratio <float>
+    设置更新时可容忍的失败率
+--health-cmd <string>
+    指定健康检查的命令
+--health-interval <duration>
+    指定健康检查的周期，可选时间单位：ms、s、m、h
+--no-healthcheck
+    禁用容器指定的HEALTHCHECK指令
+
+# 例一
+docker service update --image dockerinaction/ch11_service_hw:v2 --update-order stop-first --update-parallelism 1 --update-delay 30s hello-world
+
+# 例二
+# 手动回滚服务
+docker service update --rollback hello-world
+
+# 例三
+# 告诉集群部署失败自动回滚
+# 告诉集群失败的条件：当失败率达到60%时任务部署失败
+docker service update --update-failure-action rollback --update-max-failure-ratio 0.6 --image dockerinaction/ch11_service_hw:start-failure hello-world
+
+# 例四
+# 从命令行向服务添加用于运行状况检查的元数据并更新服务
+# 指定运行镜像中 /bin/httpping 命令进行健康检查
+# 指定每10秒进行一次健康检查
+docker service update --health-cmd /bin/httpping --health-interval 10s hello-world
+
+# 例五
+# 禁用运行状况检查
+docker service update --no-healthcheck hello-world
