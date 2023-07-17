@@ -1,0 +1,16 @@
+# docker service ps
+# 用于列出一个或多个服务的任务
+# 可以把任务理解成：为了支持当前服务所启动的容器
+docker service ps [OPTIONS] SERVICE [SERVICE...]
+
+[OPTIONS]
+-f,--filter <filter>
+    过滤输出
+--format <string>
+    格式化输出
+-q,--quiet
+    仅列出任务ID
+
+# 例一
+# 查看服务 hello-world 的任务
+docker service ps hello-world
