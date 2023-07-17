@@ -1,0 +1,15 @@
+# docker service ls
+# 用于显示服务
+docker service ls [OPTIONS]
+
+[OPTIONS]
+-f,--filter <filter>
+    过滤输出结果
+--format <string>
+    格式化输出
+-q,--quiet
+    仅显示服务ID
+
+# 例一
+# 显示所有服务
+docker service ls
