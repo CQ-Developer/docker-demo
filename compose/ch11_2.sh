@@ -5,3 +5,8 @@ docker stack deploy -c databases.yml my-databases
 
 # 列出栈中所有的任务及其存在时间
 docker stack ps --format '{{.Name}}\t{{.CurrentState}}' my-databases
+
+# 删除服务
+# 可以通过 docker service rm 命令手动删除，并不推荐
+# 可以通过在 Compose 文件中删除服务，并在命令行中添加 --prune 选项实现
+docker stack deploy -c databases.yml --prune my-databases
