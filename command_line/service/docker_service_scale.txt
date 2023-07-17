@@ -1,0 +1,7 @@
+# docker service scale
+# 用于设置服务的副本数量
+docker service scale SERVICE=REPLICAS [SERVICE=REPLICAS]
+
+# 例一
+# 将服务 hello-world 的服务数量设置为3
+docker service scale hello-world=3
