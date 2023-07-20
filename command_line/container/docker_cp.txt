@@ -1,0 +1,20 @@
+# docker cp
+# 在容器和主机之间复制文件或目录
+docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-
+docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH
+
+[OPTIONS]
+-a,--archive
+    归档模式，会复制所有的uid/gid
+-L,--follow-link
+    在SRC_PATH中跟随连接
+-q,--quiet
+    安静模式
+
+# 例一
+# 将mysql的数据复制到指定当前目录
+docker cp mysql-container:/var/lib/mysql ./
+
+# 例二
+# 将mysql的数据复制到tarball文件
+docker cp mysql-container:/var/lib/mysql - > mysql.tar
